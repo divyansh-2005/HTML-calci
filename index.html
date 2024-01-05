@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my calculator</title>
+    <!-- css -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: rgb(200, 200, 200);
+        }
+
+        .container {
+            text-align: center;
+            font-size: 10px;
+            background-color: white;
+            width: 10.5cm;
+            height: 16cm;
+            margin: auto;
+            border: none;
+            border-radius: 20px;
+        }
+
+        button {
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 35px;
+            margin: 5px;
+            background-color: rgb(220, 220, 220);
+        }
+
+        .calulator {
+            text-align: center;
+        }
+
+        table {
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 20px;
+        }
+
+        input {
+            width: 300px;
+            padding: 5px;
+            border-radius: 10px;
+            height: 60px;
+            margin: 5px;
+            margin-top: 40px;
+            margin-left: 5px;
+            font-size: 25px;
+        }
+
+        h1 {
+            font-family: Cooper Black;
+            text-align: center;
+            height: 1cm;
+            margin-top: 40px;
+        }
+
+        .b1 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> CALCULATOR</h1>
+    <div class="container">
+        <input type="text" name="screen" id="screen" align="center">
+
+        <div class="calculator">
+            <table>
+                <tr>
+                    <td><button style="color: red;">C</button></td>
+                    <td></td>
+                    <td></td>
+                    <td><button>←</button></td>
+                </tr>
+                <tr>
+                    <td><button class="b1">(</button></td>
+                    <td><button class="b1">)</button></td>
+                    <td><button class="b1">%</button></td>
+                    <td><button class="b1">/</button></td>
+                </tr>
+                <tr>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button class="b1">*</button></td>
+                </tr>
+                <tr>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button class="b1">-</button></td>
+                </tr>
+                <tr>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button class="b1">+</button></td>
+                </tr>
+                <tr>
+                    <td><button>+/-</button></td>
+                    <td><button>0</button></td>
+                    <td><button>.</button></td>
+                    <td><button style="background-color: green;">=</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>let screen = document.getElementById('screen');
+        buttons = document.querySelectorAll('button');
+        screenValue = '';
+        for (item of buttons) {
+            item.addEventListener('click', (e) => {
+                buttonText = e.target.innerText;
+                console.log('button text is ' + buttonText);
+                if (buttonText == 'C') {
+                    screenValue = ' ';
+                    screen.value = screenValue;
+                }
+                else if (buttonText == '=') {
+                    screen.value = eval(screenValue);
+                }
+                else if (buttonText == '←') {
+                    screen.value = screen.value.substr(0, screen.value.length - 1);
+                }
+                else if (buttonText == '+/-') {
+                    screen.value = screen.value * -1;
+                }
+                else {
+                    screenValue += buttonText;
+                    screen.value = screenValue;
+                }
+            })
+        }</script>
+</body>
+
+</html>
